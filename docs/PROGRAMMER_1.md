@@ -16,12 +16,12 @@ P1 bertanggung jawab untuk mengimplementasikan sistem autentikasi, manajemen use
 
 | ID | Kebutuhan | Status |
 |---|---|---|
-| FR-A1 | Sistem menyediakan login untuk semua peran (admin, user) | - |
-| FR-A2 | Admin dapat menambahkan akun pengguna baru | - |
-| FR-A3 | Admin dapat menghapus/menonaktifkan akun pengguna | - |
-| FR-A4 | Admin dapat melihat daftar seluruh pengguna terdaftar | - |
-| FR-A5 | Sistem menerapkan kontrol akses berbasis peran (role-based access) | - |
-| FR-A6 | Pengguna dapat mengelola profil dasar (nama, password) | - |
+| FR-A1 | Sistem menyediakan login untuk semua peran (admin, user) | Completed |
+| FR-A2 | Admin dapat menambahkan akun pengguna baru | Completed |
+| FR-A3 | Admin dapat menghapus/menonaktifkan akun pengguna | Completed |
+| FR-A4 | Admin dapat melihat daftar seluruh pengguna terdaftar | Completed |
+| FR-A5 | Sistem menerapkan kontrol akses berbasis peran (role-based access) | Completed |
+| FR-A6 | Pengguna dapat mengelola profil dasar (nama, password) | Completed |
 
 ---
 
@@ -273,18 +273,18 @@ tests/
 
 ## Checklist
 
-- [ ] User model dengan hashing password
-- [ ] Migration untuk users table
-- [ ] Auth controller (login, logout)
-- [ ] Admin controller (CRUD users)
-- [ ] Authentication middleware
-- [ ] Admin check middleware
-- [ ] Routes untuk auth & admin
-- [ ] Seeder untuk dummy data
-- [ ] Unit tests untuk models
-- [ ] Feature tests untuk endpoints
-- [ ] Error handling & validation
-- [ ] Response format consistent
+- [x] User model dengan hashing password
+- [x] Migration untuk users table
+- [x] Auth controller (login, logout)
+- [x] Admin controller (CRUD users)
+- [x] Authentication middleware
+- [x] Admin check middleware
+- [x] Routes untuk auth & admin
+- [x] Seeder untuk dummy data
+- [x] Unit tests untuk models
+- [x] Feature tests untuk endpoints
+- [x] Error handling & validation
+- [x] Response format consistent
 
 ---
 
