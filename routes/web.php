@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\WebViewController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,13 +30,3 @@ Route::post('/logout', [WebViewController::class, 'logout'])->name('logout');
 
 // Collaboration & Monitoring Direct API endpoints (FR-C1 to FR-C6)
 require __DIR__.'/collaboration.php';
-=======
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return response()->json([
-        'success' => true,
-        'message' => 'JARA API is running',
-    ]);
-});
->>>>>>> origin/feat/p1-auth-admin
