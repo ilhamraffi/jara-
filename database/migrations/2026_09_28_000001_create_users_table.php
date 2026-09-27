@@ -34,4 +34,4 @@ class CreateUsersTable extends Migration
     }
 }
 
-return new CreateUsersTable();
+return new CreateUsersTable;
