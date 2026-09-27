@@ -61,4 +61,20 @@ class User extends Authenticatable
     {
         return (bool) $this->is_active;
     }
+
+    /**
+     * Lists owned by this user.
+     */
+    public function lists()
+    {
+        return $this->hasMany(ListModel::class, 'owner_id');
+    }
+
+    /**
+     * List memberships for this user.
+     */
+    public function listMembers()
+    {
+        return $this->hasMany(ListMember::class);
+    }
 }
