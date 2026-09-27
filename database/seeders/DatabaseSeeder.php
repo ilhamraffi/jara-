@@ -11,18 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(UserSeeder::class);
-
-        if (class_exists(ListSeeder::class)) {
-            $this->call(ListSeeder::class);
-        }
-
-        if (class_exists(TaskSeeder::class)) {
-            $this->call(TaskSeeder::class);
-        }
-
-        if (class_exists(MemberSeeder::class)) {
-            $this->call(MemberSeeder::class);
-        }
+        $this->call([
+            UserSeeder::class,
+            ListSeeder::class,
+            TaskSeeder::class,
+            MemberSeeder::class,
+        ]);
     }
 }

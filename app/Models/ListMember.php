@@ -18,18 +18,13 @@ class ListMember extends Model
         'role',
     ];
 
-    public function list(): BelongsTo
-    {
-        return $this->belongsTo(ListModel::class, 'list_id');
-    }
-
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function isOwner(): bool
+    public function list(): BelongsTo
     {
-        return $this->role === 'owner';
+        return $this->belongsTo(ProjectList::class, 'list_id');
     }
 }

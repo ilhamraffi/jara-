@@ -30,11 +30,6 @@ class Task extends Model
 
     public function list(): BelongsTo
     {
-        return $this->belongsTo(ListModel::class, 'list_id');
-    }
-
-    public function isCompleted(): bool
-    {
-        return $this->status === 'completed';
+        return $this->belongsTo(ProjectList::class, 'list_id');
     }
 }

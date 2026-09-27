@@ -22,11 +22,14 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->validateCsrfTokens(except: [
-            '*',
+            'api/*',
+            'lists/*',
+            'dashboard',
+            'notifications',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => true,
+            fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
     })->create();

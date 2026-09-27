@@ -25,6 +25,5 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
-/database/database.sqlite
-/database/database.sqlite-journal
-
+/database/*.sqlite
+/database/*.sqlite-journal

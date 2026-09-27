@@ -2,47 +2,37 @@
 
 namespace Database\Seeders;
 
-use App\Models\ListModel;
+use App\Models\ProjectList;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ListSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
         $john = User::where('email', 'john@example.com')->first();
         $jane = User::where('email', 'jane@example.com')->first();
-        $bob = User::where('email', 'bob@example.com')->first();
-        $alice = User::where('email', 'alice@example.com')->first();
 
-        // List 1: Project Alpha (owned by John)
-        $list1 = ListModel::create([
-            'owner_id' => $john->id,
-            'name' => 'Project Alpha',
-            'description' => 'Main project for Q4 2026',
-        ]);
+        if ($john) {
+            ProjectList::updateOrCreate(
+                ['name' => 'Website Redesign Project', 'owner_id' => $john->id],
+                ['description' => 'Revamping company landing page and customer portal.']
+            );
 
-        $list1->members()->create(['user_id' => $john->id, 'role' => 'owner']);
-        $list1->members()->create(['user_id' => $jane->id, 'role' => 'member']);
-        $list1->members()->create(['user_id' => $bob->id, 'role' => 'member']);
+            ProjectList::updateOrCreate(
+                ['name' => 'Mobile App MVP', 'owner_id' => $john->id],
+                ['description' => 'Initial Flutter MVP build for Android & iOS.']
+            );
+        }
 
-        // List 2: Personal Tasks (owned by Jane)
-        $list2 = ListModel::create([
-            'owner_id' => $jane->id,
-            'name' => 'Personal Tasks',
-            'description' => 'Daily personal tasks',
-        ]);
-
-        $list2->members()->create(['user_id' => $jane->id, 'role' => 'owner']);
-
-        // List 3: Team Collaboration (owned by Bob)
-        $list3 = ListModel::create([
-            'owner_id' => $bob->id,
-            'name' => 'Team Collaboration',
-            'description' => 'Cross-team collaboration project',
-        ]);
-
-        $list3->members()->create(['user_id' => $bob->id, 'role' => 'owner']);
-        $list3->members()->create(['user_id' => $alice->id, 'role' => 'member']);
+        if ($jane) {
+            ProjectList::updateOrCreate(
+                ['name' => 'Brand & Design System', 'owner_id' => $jane->id],
+                ['description' => 'Figma design tokens, typography, and UI guidelines.']
+            );
+        }
     }
 }

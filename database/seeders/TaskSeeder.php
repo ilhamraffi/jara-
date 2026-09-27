@@ -2,91 +2,89 @@
 
 namespace Database\Seeders;
 
-use App\Models\ListModel;
+use App\Models\ProjectList;
 use App\Models\Task;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class TaskSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-        $list1 = ListModel::where('name', 'Project Alpha')->first();
-        $list2 = ListModel::where('name', 'Personal Tasks')->first();
-        $list3 = ListModel::where('name', 'Team Collaboration')->first();
+        $list1 = ProjectList::where('name', 'Website Redesign Project')->first();
+        $list2 = ProjectList::where('name', 'Mobile App MVP')->first();
+        $list3 = ProjectList::where('name', 'Brand & Design System')->first();
 
-        // Tasks for Project Alpha
-        Task::create([
-            'list_id' => $list1->id,
-            'title' => 'Design database schema',
-            'description' => 'Create ERD and define table structures',
-            'priority' => 'high',
-            'deadline' => '2026-10-05',
-            'status' => 'completed',
-        ]);
+        if ($list1) {
+            Task::create([
+                'list_id' => $list1->id,
+                'title' => 'Wireframing Landing Page',
+                'description' => 'Create low fidelity wireframes for desktop & mobile view.',
+                'priority' => 'high',
+                'deadline' => Carbon::today()->addDays(2),
+                'status' => 'completed',
+            ]);
 
-        Task::create([
-            'list_id' => $list1->id,
-            'title' => 'Implement authentication',
-            'description' => 'Setup JWT auth and user management',
-            'priority' => 'high',
-            'deadline' => '2026-10-10',
-            'status' => 'in_progress',
-        ]);
+            Task::create([
+                'list_id' => $list1->id,
+                'title' => 'Setup Tailwind & Blade Components',
+                'description' => 'Install Tailwind CSS v4 and configure component layout.',
+                'priority' => 'medium',
+                'deadline' => Carbon::today()->addDays(1),
+                'status' => 'in_progress',
+            ]);
 
-        Task::create([
-            'list_id' => $list1->id,
-            'title' => 'Build task CRUD',
-            'description' => 'Create task management endpoints',
-            'priority' => 'medium',
-            'deadline' => '2026-10-15',
-            'status' => 'pending',
-        ]);
+            Task::create([
+                'list_id' => $list1->id,
+                'title' => 'Integrate Contact Form API',
+                'description' => 'Endpoint to send email notifications via Mailgun.',
+                'priority' => 'low',
+                'deadline' => Carbon::today()->addDays(5),
+                'status' => 'pending',
+            ]);
 
-        Task::create([
-            'list_id' => $list1->id,
-            'title' => 'Write documentation',
-            'description' => 'Document API endpoints',
-            'priority' => 'low',
-            'deadline' => '2026-10-20',
-            'status' => 'pending',
-        ]);
+            Task::create([
+                'list_id' => $list1->id,
+                'title' => 'SEO Audit & Meta Tags',
+                'description' => 'Ensure Lighthouse SEO score is above 90.',
+                'priority' => 'medium',
+                'deadline' => Carbon::today()->addDays(7),
+                'status' => 'pending',
+            ]);
+        }
 
-        // Tasks for Personal Tasks
-        Task::create([
-            'list_id' => $list2->id,
-            'title' => 'Buy groceries',
-            'description' => 'Weekly grocery shopping',
-            'priority' => 'medium',
-            'deadline' => '2026-10-01',
-            'status' => 'completed',
-        ]);
+        if ($list2) {
+            Task::create([
+                'list_id' => $list2->id,
+                'title' => 'Setup Auth Screen Flow',
+                'description' => 'Login, register, and password reset screens.',
+                'priority' => 'high',
+                'deadline' => Carbon::today()->addDays(3),
+                'status' => 'in_progress',
+            ]);
 
-        Task::create([
-            'list_id' => $list2->id,
-            'title' => 'Schedule dentist appointment',
-            'description' => 'Annual checkup',
-            'priority' => 'high',
-            'deadline' => '2026-10-08',
-            'status' => 'pending',
-        ]);
+            Task::create([
+                'list_id' => $list2->id,
+                'title' => 'Push Notification Service',
+                'description' => 'Firebase Cloud Messaging integration.',
+                'priority' => 'medium',
+                'deadline' => Carbon::today()->addDays(10),
+                'status' => 'pending',
+            ]);
+        }
 
-        // Tasks for Team Collaboration
-        Task::create([
-            'list_id' => $list3->id,
-            'title' => 'Prepare presentation',
-            'description' => 'Prepare slides for client meeting',
-            'priority' => 'high',
-            'deadline' => '2026-10-12',
-            'status' => 'in_progress',
-        ]);
-
-        Task::create([
-            'list_id' => $list3->id,
-            'title' => 'Review budget',
-            'description' => 'Review Q4 budget allocation',
-            'priority' => 'medium',
-            'deadline' => '2026-10-18',
-            'status' => 'pending',
-        ]);
+        if ($list3) {
+            Task::create([
+                'list_id' => $list3->id,
+                'title' => 'Color Palette & Accessibility Contrast Check',
+                'description' => 'Check WCAG AA compliance for primary buttons.',
+                'priority' => 'high',
+                'deadline' => Carbon::today()->addDays(1),
+                'status' => 'completed',
+            ]);
+        }
     }
 }

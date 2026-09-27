@@ -1,26 +1,28 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+*/
 
-$loadModules = function () {
+// P1: Auth & Admin routes
+if (file_exists(__DIR__.'/auth.php')) {
     require __DIR__.'/auth.php';
+}
+if (file_exists(__DIR__.'/admin.php')) {
     require __DIR__.'/admin.php';
+}
 
-    if (file_exists(__DIR__.'/lists.php')) {
-        require __DIR__.'/lists.php';
-    }
+// P2: List & Task routes
+if (file_exists(__DIR__.'/lists.php')) {
+    require __DIR__.'/lists.php';
+}
+if (file_exists(__DIR__.'/tasks.php')) {
+    require __DIR__.'/tasks.php';
+}
 
-    if (file_exists(__DIR__.'/tasks.php')) {
-        require __DIR__.'/tasks.php';
-    }
-
-    if (file_exists(__DIR__.'/collaboration.php')) {
-        require __DIR__.'/collaboration.php';
-    }
-};
-
-$loadModules();
-
-Route::prefix('api')->group(function () use ($loadModules) {
-    $loadModules();
-});
+// P3: Collaboration & Monitoring routes
+if (file_exists(__DIR__.'/collaboration.php')) {
+    require __DIR__.'/collaboration.php';
+}
