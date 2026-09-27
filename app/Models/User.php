@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -20,6 +21,40 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+=======
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role',
+        'is_active',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var list<string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+>>>>>>> origin/feat/p1-auth-admin
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -27,13 +62,17 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+<<<<<<< HEAD
             'email_verified_at' => 'datetime',
+=======
+>>>>>>> origin/feat/p1-auth-admin
             'password' => 'hashed',
             'is_active' => 'boolean',
         ];
     }
 
     /**
+<<<<<<< HEAD
      * Lists owned by this user
      */
     public function ownedLists(): HasMany
@@ -61,9 +100,23 @@ class User extends Authenticatable
 
     /**
      * Check if user has admin role
+=======
+     * Check if user is an admin.
+>>>>>>> origin/feat/p1-auth-admin
      */
     public function isAdmin(): bool
     {
         return $this->role === 'admin';
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Check if user account is active.
+     */
+    public function isActive(): bool
+    {
+        return (bool) $this->is_active;
+    }
+>>>>>>> origin/feat/p1-auth-admin
 }
